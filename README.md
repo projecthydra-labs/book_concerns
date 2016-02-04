@@ -2,6 +2,17 @@
 
 This project rocks and uses MIT-LICENSE.
 
+### Getting Started Testing
+
+```bash
+bundle install
+rake engine_cart:generate
+rake jetty:clean
+rake jetty:config
+rake jetty:start
+rspec spec
+```
+
 ### Testing Manually
 
 If you want to run the tests manually, follow these instructions.

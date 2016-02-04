@@ -3,5 +3,7 @@ log/*.log
 pkg/
 Gemfile.lock
 fcrepo4-data
+jetty
+solr_conf/
 
 .internal_test_app
