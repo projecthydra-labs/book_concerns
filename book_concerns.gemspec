@@ -23,4 +23,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "engine_cart"
+  s.add_development_dependency "solr_wrapper", '~> 0.4'
+  s.add_development_dependency "fcrepo_wrapper", '~> 0.1'
 end

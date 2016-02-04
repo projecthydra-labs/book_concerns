@@ -2,5 +2,6 @@
 log/*.log
 pkg/
 Gemfile.lock
+fcrepo4-data
 
 .internal_test_app
