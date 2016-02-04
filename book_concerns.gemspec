@@ -25,4 +25,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "engine_cart"
   s.add_development_dependency "solr_wrapper", '~> 0.4'
   s.add_development_dependency "fcrepo_wrapper", '~> 0.1'
+  s.add_development_dependency "pry-byebug"
 end

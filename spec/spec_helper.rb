@@ -1,5 +1,6 @@
 require 'curation_concerns'
 require 'engine_cart'
+require 'pry'
 EngineCart.load_application!
 Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
 
