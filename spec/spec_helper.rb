@@ -2,6 +2,7 @@ require 'engine_cart'
 require 'pry'
 EngineCart.load_application!
 Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
+require 'rspec/rails'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
