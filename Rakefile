@@ -6,6 +6,6 @@ end
 
 require 'engine_cart/rake_task'
 # load rake tasks defined in lib/tasks that are not loaded in lib/active_fedora.rb
-load "lib/tasks/dev.rake"
+load "tasks/dev.rake"
 
 Bundler::GemHelper.install_tasks
