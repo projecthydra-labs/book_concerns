@@ -1,4 +1,3 @@
-require 'curation_concerns'
 require 'engine_cart'
 require 'pry'
 EngineCart.load_application!
