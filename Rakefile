@@ -12,3 +12,17 @@ require 'engine_cart/rake_task'
 Dir.glob('tasks/*.rake').each { |r| import r }
 
 Bundler::GemHelper.install_tasks
+
+task ci: ['engine_cart:generate', 'jetty:clean', 'jetty:config'] do
+  puts 'running continuous integration'
+  jetty_params = Jettywrapper.load_config
+  jetty_params[:startup_wait] = 90
+
+  error = Jettywrapper.wrap(jetty_params) do
+    Rake::Task['spec'].invoke
+  end
+  fail "test failures: #{error}" if error
+end
+
+task clean: 'engine_cart:clean'
+task default: :ci
