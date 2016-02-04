@@ -9,15 +9,22 @@ Gem::Specification.new do |s|
   s.version     = BookConcerns::VERSION
   s.authors     = ["Trey Terrell"]
   s.email       = ["tterrell@princeton.edu"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of BookConcerns."
-  s.description = "TODO: Description of BookConcerns."
-  s.license     = "MIT"
+  s.homepage    = "https://github.com/projecthydra-labs/book_concerns"
+  s.summary     = "Curation Concern engine for Books."
+  s.description = "Adds ingest, metadata, and derivative generation for books."
+  s.license     = "APACHE2"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.md"]
+  s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.2.5"
+  s.add_dependency "curation_concerns"
 
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "engine_cart"
+  s.add_development_dependency "solr_wrapper", '~> 0.4'
+  s.add_development_dependency "fcrepo_wrapper", '~> 0.1'
+  s.add_development_dependency "pry-byebug"
+  s.add_development_dependency "database_cleaner", "< 1.1.0"
 end

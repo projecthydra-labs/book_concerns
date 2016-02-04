@@ -1,0 +1,2 @@
+gem 'curation_concerns', github: 'projecthydra-labs/curation_concerns', branch:
+'fix_namespace'
