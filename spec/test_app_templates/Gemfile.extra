@@ -1,3 +1,2 @@
 gem 'curation_concerns', github: 'projecthydra-labs/curation_concerns', branch:
-'fix_namespace'
-gem 'hydra-works', github: 'projecthydra-labs/hydra-works'
+'hydra-works-dependency'
