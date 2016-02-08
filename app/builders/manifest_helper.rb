@@ -3,7 +3,7 @@ class ManifestHelper
   include BookConcerns::Engine.routes.url_helpers
   include ActionDispatch::Routing::PolymorphicRoutes
 
-  def polymorphic_url(record, opts={})
+  def polymorphic_url(record, opts = {})
     opts ||= {}
     opts[:host] ||= host
     super(record, opts)

@@ -19,4 +19,3 @@ class TestAppGenerator < Rails::Generators::Base
     rake 'db:migrate'
   end
 end
-

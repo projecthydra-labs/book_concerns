@@ -28,4 +28,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "fcrepo_wrapper", '~> 0.1'
   s.add_development_dependency "pry-byebug"
   s.add_development_dependency "database_cleaner", "< 1.1.0"
+  s.add_development_dependency "rubocop"
+  s.add_development_dependency "rubocop-rspec"
 end

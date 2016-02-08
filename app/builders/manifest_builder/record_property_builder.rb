@@ -14,18 +14,18 @@ class ManifestBuilder
       # manifest.try(:viewing_direction=, viewing_direction)
     end
 
-    private
+    # private
 
-      # def path
-      #   ManifestPath.new(record).to_s
-      # end
-      #
-      # def viewing_direction
-      #   record.try(:viewing_direction) || "left-to-right"
-      # end
-      #
-      # def viewing_hint
-      #   record.viewing_hint || "individuals"
-      # end
+    # def path
+    #   ManifestPath.new(record).to_s
+    # end
+    #
+    # def viewing_direction
+    #   record.try(:viewing_direction) || "left-to-right"
+    # end
+    #
+    # def viewing_hint
+    #   record.viewing_hint || "individuals"
+    # end
   end
 end
