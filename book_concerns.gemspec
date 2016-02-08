@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.2.5"
   s.add_dependency "curation_concerns"
+  s.add_dependency "iiif-presentation"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"
