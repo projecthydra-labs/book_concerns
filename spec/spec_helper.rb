@@ -1,5 +1,6 @@
 require 'engine_cart'
 require 'pry'
+ENV['RAILS_ENV'] ||= 'test'
 EngineCart.load_application!
 Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
 require 'rspec/rails'

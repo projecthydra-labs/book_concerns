@@ -1,3 +1,4 @@
+require 'database_cleaner'
 require 'active_fedora/cleaner'
 RSpec.configure do |config|
   config.before :each do
