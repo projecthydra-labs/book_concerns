@@ -9,6 +9,10 @@ class BookShowPresenter < CurationConcerns::WorkShowPresenter
     end
   end
 
+  def work_presenters
+    file_presenters - file_set_presenters
+  end
+
   private
 
     def manifest_helper
