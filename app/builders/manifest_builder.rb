@@ -1,11 +1,21 @@
 class ManifestBuilder
-  attr_reader :work
-  def initialize(work)
+  attr_reader :work,
+              :builders,
+              :top_record_factory
+  def initialize(work, builders:, top_record_factory:)
     @work = work
+    @builders = builders
+    @top_record_factory = top_record_factory
+  end
+
+  def apply(collection)
+    collection["manifests"] ||= []
+    collection["manifests"] << to_h
+    collection
   end
 
   def to_h
-    @to_h ||= builders.apply(top_record)
+    @to_h ||= builders.new(work).apply(top_record)
   end
 
   private
@@ -14,22 +24,7 @@ class ManifestBuilder
       @manifest ||= manifest_builder_class
     end
 
-    def builders
-      CompositeBuilder.new(
-        record_property_builder,
-        sequence_builder
-      )
-    end
-
-    def record_property_builder
-      RecordPropertyBuilder.new(work)
-    end
-
-    def sequence_builder
-      SequenceBuilder.new(work)
-    end
-
     def top_record
-      ::IIIF::Presentation::Manifest.new
+      top_record_factory.new
     end
 end
