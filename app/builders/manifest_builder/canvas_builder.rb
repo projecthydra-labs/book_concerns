@@ -19,6 +19,7 @@ class ManifestBuilder
 
     def apply(sequence)
       sequence.canvases += [canvas]
+      sequence
     end
 
     private
@@ -30,6 +31,8 @@ class ManifestBuilder
       def apply_record_properties
         canvas['@id'] = path
         canvas.label = record.to_s
+        canvas.width = 1
+        canvas.height = 1
       end
 
       def attach_image

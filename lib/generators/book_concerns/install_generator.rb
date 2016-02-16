@@ -20,5 +20,12 @@ module BookConcerns
         "    config.action_mailer.default_url_options = { host: \"test.com\" }\n"\
       end
     end
+
+    def inject_ability
+      inject_into_file 'app/models/ability.rb', after: /Hydra::Ability\s*\n/ do
+        "  include BookConcerns::Ability\n"\
+        "  self.ability_logic += [:everyone_can_manifest_curation_concerns]\n\n"
+      end
+    end
   end
 end
