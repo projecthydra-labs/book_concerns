@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 RSpec.describe ManifestBuilder::CanvasBuilderFactory do
+  subject { ManifestServiceLocator.canvas_builder_factory }
   describe ".from" do
     let(:work) { instance_double(BookShowPresenter) }
-    let(:result) { described_class.from(work) }
+    let(:result) { subject.from(work) }
     context "when a work has no file sets" do
       before do
         allow(work).to receive(:file_set_presenters).and_return([])

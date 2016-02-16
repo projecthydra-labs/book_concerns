@@ -66,7 +66,21 @@ class ManifestServiceLocator
     end
 
     def sequence_builder
-      ManifestBuilder::SequenceBuilder
+      InjectedFactory.new(
+        ManifestBuilder::SequenceBuilder,
+        canvas_builder_factory: canvas_builder_factory
+      )
+    end
+
+    def canvas_builder_factory
+      ManifestBuilder::CanvasBuilderFactory.new(
+        composite_builder: composite_builder,
+        canvas_builder_factory: canvas_builder
+      )
+    end
+
+    def canvas_builder
+      ManifestBuilder::CanvasBuilder
     end
 
     def iiif_manifest_factory

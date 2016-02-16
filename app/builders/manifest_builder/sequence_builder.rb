@@ -1,7 +1,7 @@
 class ManifestBuilder
   class SequenceBuilder
     attr_reader :work, :canvas_builder_factory
-    def initialize(work, canvas_builder_factory: CanvasBuilderFactory)
+    def initialize(work, canvas_builder_factory:)
       @work = work
       @canvas_builder_factory = canvas_builder_factory
     end
