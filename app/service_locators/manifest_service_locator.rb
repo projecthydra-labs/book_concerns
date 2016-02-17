@@ -24,12 +24,28 @@ class ManifestServiceLocator
       )
     end
 
+    def sammelband_manifest_builder
+      InjectedFactory.new(
+        ManifestBuilder,
+        builders: sammelband_manifest_builders,
+        top_record_factory: iiif_manifest_factory
+      )
+    end
+
     # Builders which receive a work as an argument to .new and return objects
     #   that respond to #apply.
     def manifest_builders
       composite_builder_factory.new(
         record_property_builder,
         sequence_builder,
+        composite_builder: composite_builder
+      )
+    end
+
+    def sammelband_manifest_builders
+      composite_builder_factory.new(
+        record_property_builder,
+        sammelband_sequence_builder,
         composite_builder: composite_builder
       )
     end
@@ -72,8 +88,22 @@ class ManifestServiceLocator
       )
     end
 
+    def sammelband_sequence_builder
+      InjectedFactory.new(
+        ManifestBuilder::SequenceBuilder,
+        canvas_builder_factory: deep_canvas_builder_factory
+      )
+    end
+
     def canvas_builder_factory
       ManifestBuilder::CanvasBuilderFactory.new(
+        composite_builder: composite_builder,
+        canvas_builder_factory: canvas_builder
+      )
+    end
+
+    def deep_canvas_builder_factory
+      ManifestBuilder::DeepCanvasBuilderFactory.new(
         composite_builder: composite_builder,
         canvas_builder_factory: canvas_builder
       )

@@ -5,7 +5,7 @@ class ManifestFactory
     end
   end
 
-  delegate :collection_manifest_builder, :manifest_builder, to: :manifest_service_locator
+  delegate :collection_manifest_builder, :manifest_builder, :sammelband_manifest_builder, to: :manifest_service_locator
   attr_reader :manifest_service_locator
   def initialize(manifest_service_locator)
     @manifest_service_locator = manifest_service_locator
@@ -15,6 +15,8 @@ class ManifestFactory
     if work.work_presenters.length > 0 && work.file_set_presenters.length == 0
       work = IIIFCollection.new(work)
       collection_manifest_builder.new(work)
+    elsif work.work_presenters.length > 0 && work.file_set_presenters.length > 0
+      sammelband_manifest_builder.new(work)
     else
       manifest_builder.new(work)
     end

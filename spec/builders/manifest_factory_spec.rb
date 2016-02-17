@@ -59,5 +59,33 @@ RSpec.describe ManifestFactory do
         expect(first_child['label']).to eq child_work_presenter.to_s
       end
     end
+    context "when there are child works AND files" do
+      class DisplayImagePresenter < CurationConcerns::FileSetPresenter
+        def display_image
+          DisplayImage.new(id, width: 100, height: 100, format: "image/jpeg")
+        end
+      end
+      let(:child_work_presenter) { BookShowPresenter.new(SolrDocument.new(book2.to_solr), nil) }
+      let(:book2) do
+        Book.new("test2")
+      end
+      let(:file_presenter) { DisplayImagePresenter.new(SolrDocument.new(file_set.to_solr), nil) }
+      let(:file_set) { FileSet.new("fileset1") }
+      let(:file_presenter2) { DisplayImagePresenter.new(SolrDocument.new(file_set2.to_solr), nil) }
+      let(:file_set2) { FileSet.new("fileset2") }
+      before do
+        allow(book_presenter).to receive(:file_presenters).and_return([child_work_presenter, file_presenter])
+        allow(child_work_presenter).to receive(:file_presenters).and_return([file_presenter2])
+      end
+      it "returns a IIIF Manifest" do
+        expect(result['@type']).to eq "sc:Manifest"
+      end
+      it "doesn't build manifests" do
+        expect(result['manifests']).to eq nil
+      end
+      it "builds sequences from all the child file sets" do
+        expect(result["sequences"].first["canvases"].length).to eq 2
+      end
+    end
   end
 end
