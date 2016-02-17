@@ -11,22 +11,13 @@ RSpec.describe ManifestBuilder::CanvasBuilder do
       allow(parent).to receive(:manifest_url).and_return("http://test.com/1")
       allow(file_set).to receive(:id).and_return("fileset")
     end
-    it "applies a canvas to the sequence" do
-      subject.apply(sequence)
+    context "when the file_set doesn't respond to display_image" do
+      it "does not apply a canvas" do
+        subject.apply(sequence)
 
-      expect(sequence.canvases.length).to eq 1
+        expect(sequence.canvases.length).to eq 0
+      end
     end
-    it "builds an ID" do
-      subject.apply(sequence)
-
-      expect(sequence.canvases.first['@id']).to eq "http://test.com/1/canvas/fileset"
-    end
-    it "sets a label" do
-      subject.apply(sequence)
-
-      expect(sequence.canvases.first['label']).to eq file_set.to_s
-    end
-
     context "when the file_set responds to #display_image" do
       let(:display_image) { instance_double(DisplayImage) }
       before do
@@ -36,6 +27,32 @@ RSpec.describe ManifestBuilder::CanvasBuilder do
         allow(display_image).to receive(:width).and_return(3000)
         allow(display_image).to receive(:format).and_return("image/jpeg")
       end
+      context "and it returns nil" do
+        before do
+          allow(file_set).to receive(:display_image).and_return(nil)
+        end
+        it "doesn't apply a canvas" do
+          subject.apply(sequence)
+
+          expect(sequence.canvases.length).to eq 0
+        end
+      end
+      it "applies a canvas to the sequence" do
+        subject.apply(sequence)
+
+        expect(sequence.canvases.length).to eq 1
+      end
+      it "builds an ID" do
+        subject.apply(sequence)
+
+        expect(sequence.canvases.first['@id']).to eq "http://test.com/1/canvas/fileset"
+      end
+      it "sets a label" do
+        subject.apply(sequence)
+
+        expect(sequence.canvases.first['label']).to eq file_set.to_s
+      end
+
       it "annotates that image on the canvas" do
         subject.apply(sequence)
 

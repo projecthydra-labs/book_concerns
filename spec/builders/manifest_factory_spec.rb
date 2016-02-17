@@ -26,9 +26,12 @@ RSpec.describe ManifestFactory do
       let(:file_presenter) { CurationConcerns::FileSetPresenter.new(SolrDocument.new(file_set.to_solr), nil) }
       let(:file_set) { FileSet.new("fileset1") }
       it "returns a sequence" do
+        allow(ManifestBuilder::CanvasBuilder).to receive(:new).and_call_original
         allow(book_presenter).to receive(:file_presenters).and_return([file_presenter])
 
-        expect(result["sequences"].length).to eq 1
+        result
+
+        expect(ManifestBuilder::CanvasBuilder).to have_received(:new).exactly(1).times.with(file_presenter, anything)
       end
     end
     context "when there are child works" do
