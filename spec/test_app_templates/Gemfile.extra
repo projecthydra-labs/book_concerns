@@ -1,2 +1,1 @@
-gem 'curation_concerns', github: 'projecthydra-labs/curation_concerns', branch:
-'hydra-works-dependency'
+gem 'activefedora-aggregation', github: 'projecthydra-labs/activefedora-aggregation', branch: 'allow_uris_for_target_id'
