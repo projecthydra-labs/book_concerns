@@ -1,2 +1,0 @@
-gem 'curation_concerns', github: 'projecthydra-labs/curation_concerns', branch:
-'hydra-works-dependency'

@@ -3,5 +3,5 @@
 
 class CurationConcerns::BooksController < ApplicationController
   include CurationConcerns::CurationConcernController
-  set_curation_concern_type Book
+  self.curation_concern_type = Book
 end
