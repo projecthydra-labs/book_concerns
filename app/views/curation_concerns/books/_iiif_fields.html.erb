@@ -1,0 +1,17 @@
+<div class="well">
+  <%= simple_form_for [main_app, @presenter], remote: true, html: { id: 'resource-form', 'data-type': 'json' } do |f| %>
+    <div>
+      <label>Viewing Direction:</label>
+
+      <%= f.collection_radio_buttons :viewing_direction, f.object.viewing_directions, :to_s, :to_s, item_wrapper_class: 'radio', item_wrapper_tag: 'div' do |b| %>
+        <%= b.radio_button + b.text %>
+      <% end %>
+    </div>
+    <div>
+      <label>Viewing Hint:</label>
+      <%= f.collection_radio_buttons :viewing_hint, f.object.viewing_hints, :to_s, :to_s, item_wrapper_class: 'radio', item_wrapper_tag: 'div' do |b| %>
+        <%= b.radio_button + b.text %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

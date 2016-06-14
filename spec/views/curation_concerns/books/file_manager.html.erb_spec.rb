@@ -31,6 +31,12 @@ RSpec.describe "curation_concerns/books/file_manager.html.erb", type: :view do
       expect(rendered).to have_field hint
     end
   end
+  it "has inputs to edit the viewing hint" do
+    expect(rendered).to have_selector("input[name='book[viewing_direction]']")
+  end
+  it "has inputs to edit the viewing direction" do
+    expect(rendered).to have_selector("input[name='book[viewing_hint]']")
+  end
   context "when there's a viewing hint" do
     let(:book) { FactoryGirl.create(:book, viewing_hint: ["non-paged"]) }
     it "marks a button as selected" do
