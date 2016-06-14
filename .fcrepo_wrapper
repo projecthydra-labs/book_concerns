@@ -1,0 +1,5 @@
+port: 8984
+verbose: true
+managed: true
+enable_jms: false
+fcrepo_home_dir: "fcrepo4-development-data"
