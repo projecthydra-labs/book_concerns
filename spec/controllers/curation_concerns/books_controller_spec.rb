@@ -13,4 +13,10 @@ RSpec.describe CurationConcerns::BooksController, type: :controller do
       expect(get :show, id: b.id).to be_success
     end
   end
+
+  describe "#show_presenter" do
+    it "is the books presenter" do
+      expect(described_class.show_presenter).to eq ::BookConcerns::Presenters::BookPresenter
+    end
+  end
 end

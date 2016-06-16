@@ -4,4 +4,5 @@
 class CurationConcerns::BooksController < ApplicationController
   include CurationConcerns::CurationConcernController
   self.curation_concern_type = Book
+  self.show_presenter = ::BookConcerns::Presenters::BookPresenter
 end
