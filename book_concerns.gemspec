@@ -24,11 +24,14 @@ Gem::Specification.new do |s|
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "engine_cart"
-  s.add_development_dependency "solr_wrapper", '~> 0.4'
+  s.add_development_dependency "solr_wrapper", '~> 0.13'
   s.add_development_dependency "fcrepo_wrapper", '~> 0.1'
   s.add_development_dependency "pry-byebug"
   s.add_development_dependency "database_cleaner", "< 1.1.0"
   s.add_development_dependency "factory_girl"
   s.add_development_dependency "capybara"
   s.add_development_dependency 'jasmine'
+  s.add_development_dependency 'coveralls'
+  s.add_development_dependency 'rubocop'
+  s.add_development_dependency 'rubocop-rspec'
 end

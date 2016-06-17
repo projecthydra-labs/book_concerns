@@ -5,7 +5,14 @@ rescue LoadError
 end
 require 'engine_cart/rake_task'
 require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new(:spec)
+require 'rubocop/rake_task'
+RuboCop::RakeTask.new(:rubocop) do |task|
+  task.requires << 'rubocop-rspec'
+  task.fail_on_error = true
+end
+task spec: :rubocop do
+  RSpec::Core::RakeTask.new(:spec)
+end
 # load rake tasks defined in lib/tasks that are not loaded in lib/active_fedora.rb
 Dir.glob('tasks/*.rake').each { |r| import r }
 

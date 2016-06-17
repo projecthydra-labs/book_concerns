@@ -3,7 +3,7 @@ FactoryGirl.define do
   # curation_concerns:install generator.
   factory :book, class: Book do
     transient do
-      title [ "Test Book" ]
+      title ["Test Book"]
       user { FactoryGirl.create(:user) }
     end
 

@@ -10,7 +10,7 @@ RSpec.describe "curation_concerns/books/file_manager.html.erb", type: :view do
   let(:file_set_presenter) do
     ::FileSetPresenter.new(SolrDocument.new(file_set.to_solr), nil)
   end
-  let(:file_set) { FileSet.new.tap{|x| x.apply_depositor_metadata("test")}.tap{|x| x.save} }
+  let(:file_set) { FileSet.new.tap { |x| x.apply_depositor_metadata("test") }.tap(&:save) }
   let(:child_book_presenter) do
     presenter.class.new(
       SolrDocument.new(FactoryGirl.create(:book).to_solr),
