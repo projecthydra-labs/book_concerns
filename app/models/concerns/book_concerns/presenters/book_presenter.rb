@@ -1,7 +1,11 @@
 module BookConcerns
   module Presenters
     class BookPresenter < CurationConcerns::WorkShowPresenter
+      include Rails.application.routes.url_helpers
+      include ActionDispatch::Routing::PolymorphicRoutes
+
       self.file_presenter_class = ::FileSetPresenter
+      self.work_presenter_class = ::BookConcerns::Presenters::BookPresenter
 
       def viewing_direction
         solr_document.viewing_direction.first
@@ -26,6 +30,10 @@ module BookConcerns
           'top-to-bottom',
           'bottom-to-top'
         ]
+      end
+
+      def manifest_url
+        polymorphic_url([:manifest, self])
       end
     end
   end
