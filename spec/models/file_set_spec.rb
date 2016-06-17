@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe FileSet do
-  subject { FileSet.new }
+  subject { described_class.new }
   describe "#viewing_hint" do
     it "indexes it" do
       subject.viewing_hint = ["left-to-right"]

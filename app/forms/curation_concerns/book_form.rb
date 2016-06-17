@@ -7,7 +7,6 @@ module CurationConcerns
 
     def self.model_attributes(attrs)
       [:viewing_hint, :viewing_direction].each do |iiif_field|
-
         attrs[iiif_field] = Array(attrs[iiif_field]) if attrs[iiif_field]
       end
       super(attrs)
@@ -22,4 +21,3 @@ module CurationConcerns
     end
   end
 end
-

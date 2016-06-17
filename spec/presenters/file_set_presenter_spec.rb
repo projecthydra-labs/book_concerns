@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe FileSetPresenter do
-  subject { FileSetPresenter.new(solr_doc, ability) }
+  subject { described_class.new(solr_doc, ability) }
   let(:ability) { nil }
   let(:solr_doc) do
     SolrDocument.new(
